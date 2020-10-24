@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>3 Modules Vue Core</h1>
+  <div style="margin-left: 1rem;margin-bottom: 1rem;">
+    <h2>1. Compiler Module</h2>
+    <h4>Lấy đống templates rồi nhét vào render functions</h4>
+    <h6>Có thể xảy ra trong môi trường runtime của browser</h6>
+    <h6>Có thể xảy ra Vue project được build</h6>
+    <hr>
+    <h2>2. Reactive Module</h2>
+    <h4>Tạo JS reactive objects có thể tracking được các thay đổi</h4>
+    <hr>
+    <h2>3. Renderer Module</h2>
+    <h4>3.1 Render Phase</h4>
+    <h6>Gọi render function --> Trả về VNode</h6>
+    <h4>Mount Phase</h4>
+    <h6>Từ đống Vnode --> Tạo ra Webpage</h6>
+    <h4>Path Phase</h4>
+    <h6>So sánh VNode cũ vs VNode mới ---> Có thay đổi thì cập nhật Webpage</h6>
+    <h4></h4>
+  </div>
+  <h1>Tổng quan 1 template hoạt động trong Vue3 </h1>
+  <ul>
+    <ol>Compiler module nhét đống vue-html template vào trong 1 render function</ol>
+    <ol>Các reactive objects được khởi tạo bởi Reactive Module</ol>
+    <ol>
+      Renderer Module Render Phase gọi render function để tạo ra 1 VNode. Khi mà Render function references 1 reactive object,
+      chúng sẽ theo dõi và chạy lại hàm render function 1 lần nữa nếu reactive object thay đổi.
+    </ol>
+    <ol>
+      Trong Mounting Phase, hàm mount sẽ được gọi, sử dụng đống VNode để tạo ra Webpage
+    </ol>
+    <ol>
+      Khi reactive object bị thay đổi, Patch Phase gọi lại hàm render function 1 lần nữa, nó sẽ so sánh VNode mới và cũ,
+      sẽ chỉ update những thứ nào bị thay đổi.
+    </ol>
+  </ul>
+</body>
+</html>
